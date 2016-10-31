@@ -69,10 +69,23 @@ namespace ConfigMvc.Controllers
              * 3. Configuration Section
             **/
 
+            // Explicit
             var configuration = WebConfigurationManager.OpenWebConfiguration("~/Web.config");
             var systemWeb = configuration.GetSection("system.web");
             var authentication = configuration.GetSection("system.web/authentication");
             var compilation = configuration.GetSection("system.web/compilation");
+            var httpModules = configuration.GetSection("system.web/httpModules/add");
+            var configSections = configuration.GetSection("configSections/section");
+
+            // Static Implicit
+            var systemWeb1 = WebConfigurationManager.GetSection("system.web");
+            var authentication1 = WebConfigurationManager.GetSection("system.web/authentication");
+            var compilation1 = WebConfigurationManager.GetSection("system.web/compilation");
+            var httpModules1 = WebConfigurationManager.GetSection("system.web/httpModules/add");
+            var configSections1 = WebConfigurationManager.GetSection("configSections/section");
+
+            var custom = WebConfigurationManager.GetSection("newUserDefaults");
+            var child = WebConfigurationManager.GetSection("newUserDefaults.web/child");
 
             // Q. How can I read other settings "web.settings"?
             //var systemWebServer = configuration.GetSection("system.webServer");
