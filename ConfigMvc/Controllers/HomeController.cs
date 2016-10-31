@@ -19,6 +19,11 @@ namespace ConfigMvc.Controllers
 
             var y = WebConfigurationManager.AppSettings;
 
+
+            /*
+             * 1. Application Settings
+            **/
+
             // reading app settings by index
             var index0 = WebConfigurationManager.AppSettings[0];
             var index1 = WebConfigurationManager.AppSettings[1];
@@ -43,6 +48,27 @@ namespace ConfigMvc.Controllers
             // WebConfigurationManager.AppSettings.Add("TestRemove", "B");
             // WebConfigurationManager.AppSettings.Remove("TestRemove");
 
+
+            /*
+             * 2. Connection String
+            **/
+
+            // exception: The configuration is read only.
+            //WebConfigurationManager.ConnectionStrings.Add(new ConnectionStringSettings()
+            //{
+            //    Name = "Sukhoi1",
+            //    ConnectionString = "DemoConnectionString",
+            //    ProviderName = "ProviderName"
+            //});
+
+            // exception: The configuration is read only.
+            //WebConfigurationManager.ConnectionStrings.Clear();
+
+
+            /*
+             * 3. Configuration Section
+            **/
+
             var configuration = WebConfigurationManager.OpenWebConfiguration("~/Web.config");
             var systemWeb = configuration.GetSection("system.web");
             var authentication = configuration.GetSection("system.web/authentication");
@@ -55,6 +81,10 @@ namespace ConfigMvc.Controllers
             //var modules2 = configuration.GetSectionGroup("system.webServer/modules"); // null ?
             //var validation = configuration.GetSection("system.webServer/validation"); // null ?
 
+
+            /*
+             * 5. Transformation
+            **/
             // Q. How to use transformation?
 
             return View();
@@ -63,6 +93,11 @@ namespace ConfigMvc.Controllers
         public ActionResult DisplaySingle()
         {
             return View((object)WebConfigurationManager.AppSettings["defaultLanguage"]);
+        }
+
+        public ActionResult ConnectionString()
+        {
+            return View((object)WebConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString);
         }
     }
 }
