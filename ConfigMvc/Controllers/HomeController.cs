@@ -136,9 +136,9 @@ namespace ConfigMvc.Controllers
             if (nuDefaults != null)
             {
                 configData.Add("City", nuDefaults.City);
-                configData.Add("Country", nuDefaults.City);
-                configData.Add("Language", nuDefaults.City);
-                configData.Add("Region", nuDefaults.City);
+                configData.Add("Country", nuDefaults.Country);
+                configData.Add("Language", nuDefaults.Language);
+                configData.Add("Region", nuDefaults.RegionCode.ToString());
             }
 
             return configData;
