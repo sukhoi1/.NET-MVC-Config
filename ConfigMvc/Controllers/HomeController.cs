@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Configuration;
 using System.Web.Mvc;
 using System.Web.Configuration;
 using ConfigMvc.Configuration;
@@ -31,6 +32,20 @@ namespace ConfigMvc.Controllers
         public ActionResult ConnectionString()
         {
             return View((object) WebConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString);
+        }
+
+        public ActionResult Css()
+        {
+            Dictionary<string, string> dict = new Dictionary<string, string>();
+
+            foreach (ConnectionStringSettings x in WebConfigurationManager.ConnectionStrings)
+            {
+                dict.Add(x.Name, $"{x.ProviderName} {x.ConnectionString}");
+            }
+
+            // Note: two connection strings will appear event though there is only one 
+            // connection string in web.config (another one is inherited from mahine.config)!
+            return View("~/Views/Home/Ccs.cshtml", dict);
         }
 
         private void ApplicationSettings()
