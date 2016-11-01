@@ -198,8 +198,10 @@
     <Compile Include="Configuration\Collection\Place.cs" />
     <Compile Include="Configuration\Collection\PlaceCollection.cs" />
     <Compile Include="Configuration\Collection\PlaceSection.cs" />
+    <Compile Include="Configuration\Group\CustomDefaults.cs" />
     <Compile Include="Configuration\NewUserDefaultsSection.cs" />
-    <Compile Include="Controllers\CcsController.cs" />
+    <Compile Include="Controllers\GroupController.cs" />
+    <Compile Include="Controllers\CollectionController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
