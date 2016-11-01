@@ -1,5 +1,7 @@
-﻿using System.Web.Mvc;
+﻿using System.Collections.Generic;
+using System.Web.Mvc;
 using System.Web.Configuration;
+using ConfigMvc.Configuration;
 
 namespace ConfigMvc.Controllers
 {
@@ -7,19 +9,32 @@ namespace ConfigMvc.Controllers
     {
         public ActionResult Index()
         {
-            var connectionStrings = WebConfigurationManager.ConnectionStrings;
-            if (connectionStrings != null && connectionStrings.Count > 0)
-            {
-                var cs1 = connectionStrings[0];
-                if (connectionStrings.Count == 2)
-                {
-                    var cs2 = connectionStrings[1];
-                }
-            }
+            //this.ApplicationSettings();
+            //this.ConnectionStrings();
+            //this.ConfigurationSection();
+            //group
+            //this.Transformation();
 
-            var y = WebConfigurationManager.AppSettings;
+            return View();
+        }
 
+        public ActionResult Ccs()
+        {
+            return View(this.CustomConfigurationSection());
+        }
 
+        public ActionResult DisplaySingle()
+        {
+            return View((object) WebConfigurationManager.AppSettings["defaultLanguage"]);
+        }
+
+        public ActionResult ConnectionString()
+        {
+            return View((object) WebConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString);
+        }
+
+        private void ApplicationSettings()
+        {
             /*
              * 1. Application Settings
             **/
@@ -47,11 +62,25 @@ namespace ConfigMvc.Controllers
             // WebConfigurationManager.AppSettings.Add("MyCustomWebConfigSetting", "test");
             // WebConfigurationManager.AppSettings.Add("TestRemove", "B");
             // WebConfigurationManager.AppSettings.Remove("TestRemove");
+        }
 
-
+        private void ConnectionStrings()
+        {
             /*
              * 2. Connection String
             **/
+
+            var connectionStrings = WebConfigurationManager.ConnectionStrings;
+            if (connectionStrings != null && connectionStrings.Count > 0)
+            {
+                var cs1 = connectionStrings[0];
+                if (connectionStrings.Count == 2)
+                {
+                    var cs2 = connectionStrings[1];
+                }
+            }
+
+            var y = WebConfigurationManager.AppSettings;
 
             // exception: The configuration is read only.
             //WebConfigurationManager.ConnectionStrings.Add(new ConnectionStringSettings()
@@ -63,8 +92,10 @@ namespace ConfigMvc.Controllers
 
             // exception: The configuration is read only.
             //WebConfigurationManager.ConnectionStrings.Clear();
+        }
 
-
+        private void ConfigurationSection()
+        {
             /*
              * 3. Configuration Section
             **/
@@ -93,24 +124,32 @@ namespace ConfigMvc.Controllers
             //var modules = configuration.GetSection("system.webServer/modules"); // null ?
             //var modules2 = configuration.GetSectionGroup("system.webServer/modules"); // null ?
             //var validation = configuration.GetSection("system.webServer/validation"); // null ?
+        }
 
+        private Dictionary<string, string> CustomConfigurationSection()
+        {
+            Dictionary<string, string> configData = new Dictionary<string,string>();
 
+            NewUserDefaultsSection nuDefaults = WebConfigurationManager.GetWebApplicationSection("newUserDefaults")
+                as ConfigMvc.Configuration.NewUserDefaultsSection;
+
+            if (nuDefaults != null)
+            {
+                configData.Add("City", nuDefaults.City);
+                configData.Add("Country", nuDefaults.City);
+                configData.Add("Language", nuDefaults.City);
+                configData.Add("Region", nuDefaults.City);
+            }
+
+            return configData;
+        }
+
+        private void Transformation()
+        {
             /*
              * 5. Transformation
             **/
             // Q. How to use transformation?
-
-            return View();
-        }
-
-        public ActionResult DisplaySingle()
-        {
-            return View((object)WebConfigurationManager.AppSettings["defaultLanguage"]);
-        }
-
-        public ActionResult ConnectionString()
-        {
-            return View((object)WebConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString);
         }
     }
 }
