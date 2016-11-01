@@ -26,12 +26,12 @@ namespace ConfigMvc.Controllers
 
         public ActionResult DisplaySingle()
         {
-            return View((object) WebConfigurationManager.AppSettings["defaultLanguage"]);
+            return View((object)WebConfigurationManager.AppSettings["defaultLanguage"]);
         }
 
         public ActionResult ConnectionString()
         {
-            return View((object) WebConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString);
+            return View((object)WebConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString);
         }
 
         public ActionResult Css()
