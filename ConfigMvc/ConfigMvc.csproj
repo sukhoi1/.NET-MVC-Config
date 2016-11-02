@@ -238,7 +238,6 @@
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <None Include="Properties\PublishProfiles\PublishProfile.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -280,6 +279,9 @@
     <Content Include="Views\Home\DisplaySingle.cshtml" />
     <Content Include="Views\Home\ConnectionString.cshtml" />
     <Content Include="Views\Home\Ccs.cshtml" />
+    <Content Include="Views\FolderConfig\Many.cshtml" />
+    <Content Include="Views\FolderConfig\App.config" />
+    <Content Include="Views\FolderConfig\web.config" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -292,7 +294,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\Elements\" />
     <Folder Include="Views\Renamed\" />
   </ItemGroup>
   <ItemGroup>
