@@ -199,6 +199,12 @@
     <Compile Include="Configuration\Collection\PlaceCollection.cs" />
     <Compile Include="Configuration\Collection\PlaceSection.cs" />
     <Compile Include="Configuration\Group\CustomDefaults.cs" />
+    <Compile Include="Configuration\NestedCollection\ElementOne.cs" />
+    <Compile Include="Configuration\NestedCollection\ElementTwo.cs" />
+    <Compile Include="Configuration\NestedCollection\CollectionTwo.cs" />
+    <Compile Include="Configuration\NestedCollection\Group.cs" />
+    <Compile Include="Configuration\NestedCollection\Section.cs" />
+    <Compile Include="Configuration\NestedCollection\CollectionOne.cs" />
     <Compile Include="Configuration\NewUserDefaultsSection.cs" />
     <Compile Include="Configuration\Renamed\EntryElement.cs" />
     <Compile Include="Configuration\Renamed\MyCollection.cs" />
@@ -206,6 +212,7 @@
     <Compile Include="Controllers\GroupController.cs" />
     <Compile Include="Controllers\CollectionController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\NestedController.cs" />
     <Compile Include="Controllers\RenamedController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
