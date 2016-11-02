@@ -10,13 +10,13 @@ namespace ConfigMvc.Controllers
     {
         public ActionResult Index()
         {
-            //this.ApplicationSettings();
-            //this.ConnectionStrings();
-            //this.ConfigurationSection();
-            //group
-            //this.Transformation();
+            Dictionary<string, string> dict = new Dictionary<string, string>();
+            foreach (string key in WebConfigurationManager.AppSettings.Keys)
+            {
+                dict.Add(key, $"{key} {WebConfigurationManager.AppSettings[key]}");
+            }
 
-            return View();
+            return View("~/Views/Home/Ccs.cshtml", dict);
         }
 
         public ActionResult Ccs()

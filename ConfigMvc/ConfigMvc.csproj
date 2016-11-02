@@ -209,6 +209,7 @@
     <Compile Include="Configuration\Renamed\EntryElement.cs" />
     <Compile Include="Configuration\Renamed\MyCollection.cs" />
     <Compile Include="Configuration\Renamed\MySection.cs" />
+    <Compile Include="Controllers\ElementsController.cs" />
     <Compile Include="Controllers\GroupController.cs" />
     <Compile Include="Controllers\CollectionController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -237,6 +238,7 @@
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <None Include="Properties\PublishProfiles\PublishProfile.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -250,12 +252,6 @@
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\_references.js" />
     <Content Include="Web.config" />
-    <Content Include="Web.Debug.config">
-      <DependentUpon>Web.config</DependentUpon>
-    </Content>
-    <Content Include="Web.Release.config">
-      <DependentUpon>Web.config</DependentUpon>
-    </Content>
     <Content Include="Views\Web.config" />
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
@@ -284,9 +280,19 @@
     <Content Include="Views\Home\DisplaySingle.cshtml" />
     <Content Include="Views\Home\ConnectionString.cshtml" />
     <Content Include="Views\Home\Ccs.cshtml" />
+    <None Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+    <None Include="Web.PublishProfile.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+    <None Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\Elements\" />
     <Folder Include="Views\Renamed\" />
   </ItemGroup>
   <ItemGroup>
