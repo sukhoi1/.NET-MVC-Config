@@ -200,9 +200,13 @@
     <Compile Include="Configuration\Collection\PlaceSection.cs" />
     <Compile Include="Configuration\Group\CustomDefaults.cs" />
     <Compile Include="Configuration\NewUserDefaultsSection.cs" />
+    <Compile Include="Configuration\Renamed\EntryElement.cs" />
+    <Compile Include="Configuration\Renamed\MyCollection.cs" />
+    <Compile Include="Configuration\Renamed\MySection.cs" />
     <Compile Include="Controllers\GroupController.cs" />
     <Compile Include="Controllers\CollectionController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\RenamedController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -276,6 +280,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\Renamed\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
